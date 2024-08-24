@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .birthday-wish {
+            font-size: 24px;
+            color: #ffffff;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out, float 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .birthday-wish h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .heart, .sparkle, .cake, .gift, .balloon {
+            position: absolute;
+        }
+        .heart {
+            font-size: 20px;
+            animation: fall 10s linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        .sparkle {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        .cake {
+            width: 100px;
+            height: 80px;
+            background: #f9c5d1;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            bottom: -40px;
+            left: 20px;
+        }
+        .cake::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #ff6b6b;
+            top: -30px;
+            left: 45px;
+        }
+        .cake::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: #feca57;
+            bottom: 0;
+            border-radius: 0 0 10px 10px;
+        }
+        .gift {
+            width: 60px;
+            height: 60px;
+            background: #ff9ff3;
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            transform: rotate(-15deg);
+        }
+        .gift::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: #f368e0;
+            top: 20px;
+        }
+        .gift::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 100%;
+            background: #f368e0;
+            left: 20px;
+        }
+        .balloon {
+            width: 40px;
+            height: 50px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+            right: 50px;
+            animation: floatBalloon 3s ease-in-out infinite;
+        }
+        .balloon::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: #fff;
+            bottom: -60px;
+            left: 50%;
+        }
+        @keyframes floatBalloon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="birthday-wish">
+            <h1>Chúc mừng ngày đặc biệt của em!</h1>
+            Chúc em tuổi mới mau ăn chóng lớn,<br>
+            bớt làm anh lo nè, luôn vui vẻ<br>
+            và ngày càng xinh đẹp rực rỡ nhoaaa
+        </div>
+        <div class="cake"></div>
+        <div class="gift"></div>
+        <div class="balloon"></div>
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            const colors = ['#ff69b4', '#ff1493', '#ff6347', '#ff4500'];
+            heart.innerHTML = '❤';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 7 + 's';
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1500);
+        }
+        setInterval(createHeart, 300);
+        setInterval(createSparkle, 100);
+    </script>
+</body>
+</html>
